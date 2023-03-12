@@ -6,6 +6,22 @@ const graphcms = new GraphQLClient(
   "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clf4fo6ho4xew01umcz8reajm/master"
 );
 
+const QUERY = gql`
+{
+   posts {
+    createdAt
+    datePublished
+    id
+    publishedAt
+    slug
+    title
+    updatedAt
+    content {
+      html
+    }
+}
+`;
+
 export default function Home() {
   return (
     <>
