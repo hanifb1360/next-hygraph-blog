@@ -1,5 +1,6 @@
 import { GraphQLClient, gql } from 'graphql-request';
 import styles from '@/styles/Slug.module.css';
+import Image from 'next/image';
 
 // GraphQL client instance with the API endpoint URL
 const graphcms = new GraphQLClient(

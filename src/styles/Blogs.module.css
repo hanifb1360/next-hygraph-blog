@@ -1,0 +1,33 @@
+
+
+.main {
+  display: grid; 
+  padding: 0rem 2rem 4rem 2rem;
+  grid-template-columns: 1fr 1fr; 
+  grid-template-rows: 1fr; 
+  gap: 20px 20px; 
+  grid-template-areas: 
+    ". .";  
+    background-color: rgb(226, 231, 235);
+}
+.title h1 {
+  color: rgb(39, 39, 39);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem;
+  font-size: 2rem;
+}
+
+@media screen and (max-width: 968px) {
+  .main {
+    padding: 2rem 2rem 4rem 2rem;
+    grid-template-columns: 1fr; 
+    grid-template-rows: 1fr ; 
+    gap: 20px 20px; 
+    grid-template-areas: 
+      "."
+      "."
+      "."; 
+  }
+}

@@ -1,13 +1,26 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from '../styles/Navbar.module.css';
 
 export default function Navbar() {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
+  const [shadow, setShadow] = useState(false);
+
+  useEffect(() => {
+    const handleShadow = () => {
+      if (window.scrollY >= 70) {
+        setShadow(true);
+      } else {
+        setShadow(false);
+      }
+    };
+    window.addEventListener('scroll', handleShadow);
+  }, []);
+
   return (
-    <nav className={styles.navigation}>
+    <nav className={`${styles.navigation} ${shadow ? styles.navShadow : ''}`}>
       <Link href="/" legacyBehavior>
-        <a className={styles.logo}>MacroSoft</a>
+        <a className={styles.logo}>TECHNIUZ</a>
       </Link>
       <button
         className={styles.hamburger}
@@ -17,29 +30,14 @@ export default function Navbar() {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill="none"
           viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
+          fill="currentColor"
           class="w-6 h-6"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M3.75 6.75h16.5M3.75 12H12m-8.25 5.25h16.5"
-          />
-        </svg>
-
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-5 w-5"
-          viewBox="0 0 20 20"
-          fill="white"
-        >
-          <path
-            fillRule="evenodd"
-            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-            clipRule="evenodd"
+            fill-rule="evenodd"
+            d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75H12a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+            clip-rule="evenodd"
           />
         </svg>
       </button>
@@ -50,18 +48,24 @@ export default function Navbar() {
       >
         <ul>
           <li>
-            <Link href="/home" legacyBehavior>
-              <a>Home</a>
+            <Link href="/" legacyBehavior>
+              <a onClick={() => setIsNavExpanded(false)}>Home</a>
             </Link>
           </li>
           <li>
+            <Link href="/blogs" legacyBehavior>
+              <a onClick={() => setIsNavExpanded(false)}>Blogs</a>
+            </Link>
+          </li>
+
+          <li>
             <Link href="/about" legacyBehavior>
-              <a>About</a>
+              <a onClick={() => setIsNavExpanded(false)}>About</a>
             </Link>
           </li>
           <li>
             <Link href="/contact" legacyBehavior>
-              <a>Contact</a>
+              <a onClick={() => setIsNavExpanded(false)}>Contact</a>
             </Link>
           </li>
         </ul>

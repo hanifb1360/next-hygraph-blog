@@ -25,7 +25,7 @@ export default function BlogPost({
               src={author.avatar.url}
               alt=" this is a visual presentation of the author of the article in this blog"
             />
-            <h3>{author.name}</h3>
+            <h3 className={styles.authorName}>{author.name}</h3>
           </div>
           <div className={styles.date}>
             <h3>{datePublished}</h3>
